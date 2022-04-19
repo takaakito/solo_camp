@@ -1,0 +1,15 @@
+<% @camps.each do |camp| %>
+<div>
+  <% if camp.image.attached? %>
+    <%= image_tag camp.image, size: "200x200" %>
+<% else %>
+    <%= image_tag 'no_image', size: "200x200" %>
+<% end %>
+  <p>キャンプ場：<%= camp.name %></p>
+  <p>エリア：<%= camp.camp_area %></p>
+  <p>キャンプの種類：<%= camp.category %></p>
+  <p>説明：<%= camp.body %></p>
+  <p>ユーザーネーム：<%= camp.user.name %></p>
+</div>
+<% end %>
+
