@@ -1,12 +1,16 @@
 <div>
   <h3><%= @user.name %></h3>
-   <% if @user.profile_image.attached? %>
+  <p>ひとこと：<%= @user.introduction %></p>
+  <% if @user.profile_image.attached? %>
  <%= image_tag @user.profile_image, size: "100x100" %>
  <% else %>
  <%= image_tag 'no_image', size: "100x100" %>
- <%= link_to "詳細へ", user_path(@user.id) %>  
- <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
 <% end %>
+  <p>行動範囲：<%= @user.area %></p>
+  <p>キャンプレベル：<%= @user.level %></p>
+    <% if @user == current_user %>
+<%= link_to "プロフィール編集", edit_user_path(@user) %>
+   <% end %>
 </div>
 
 <% @camps.each do |camp| %>
@@ -20,3 +24,4 @@
 キャンプの種類：<%= camp.category %></p>
 説明：<%= camp.body %></p>
 <% end %>
+
