@@ -5,4 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
     has_many :camps, dependent: :destroy
+    has_one_attached :profile_image
+  
+
 end

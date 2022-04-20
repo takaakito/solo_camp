@@ -1,0 +1,22 @@
+<div>
+  <h3><%= @user.name %></h3>
+   <% if @user.profile_image.attached? %>
+ <%= image_tag @user.profile_image, size: "100x100" %>
+ <% else %>
+ <%= image_tag 'no_image', size: "100x100" %>
+ <%= link_to "詳細へ", user_path(@user.id) %>  
+ <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+<% end %>
+</div>
+
+<% @camps.each do |camp| %>
+ <% if camp.image.attached? %>
+ <%= image_tag camp.image, size: "400x300" %>
+ <% else %>
+ <%= image_tag 'no_image', size: "400x300" %>
+<% end %>
+キャンプ場：<%= camp.name %></p>
+エリア：<%= camp.camp_area %></p>
+キャンプの種類：<%= camp.category %></p>
+説明：<%= camp.body %></p>
+<% end %>
