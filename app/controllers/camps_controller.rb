@@ -8,12 +8,19 @@ class CampsController < ApplicationController
   end
 
   def show
+    @camp = Camp.find(params[:id])
   end
   
   def create
     @camp = Camp.new(camp_params)
     @camp.user_id = current_user.id
     @camp.save
+    redirect_to camps_path
+  end
+  
+  def destroy
+    @camp = Camp.find(params[:id])
+    @camp.destroy
     redirect_to camps_path
   end
   

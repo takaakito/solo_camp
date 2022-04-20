@@ -1,2 +1,16 @@
-<h1>Camps#show</h1>
-<p>Find me in app/views/camps/show.html.erb</p>
+<div>
+   <% if @camp.image.attached? %>
+   <%= image_tag @camp.image, size: "400x300" %>
+　 <% else %>
+   <%= image_tag 'no_image', size: "400x300" %>
+　 <% end %>
+   <p>キャンプ場：<%= @camp.name %></p>
+   <p>エリア：<%= @camp.camp_area %></p>
+   <p>キャンプの種類：<%= @camp.category %></p>
+   <p>説明：<%= @camp.body %></p>
+   <p>ユーザーネーム：<%= @camp.user.name %></p>
+   <p>投稿日：<%= @camp.created_at.strftime('%Y/%m/%d') %></p>
+   <% if @camp.user == current_user %>
+   <%= link_to "削除", camp_path(@camp), method: :delete %>
+   <% end %>
+</div>
