@@ -1,16 +1,61 @@
-<div>
-   <% if @camp.image.attached? %>
-   <%= image_tag @camp.image, size: "400x300" %>
-　 <% else %>
-   <%= image_tag 'no_image', size: "400x300" %>
-　 <% end %>
+<div class="container ">
+   
+   <div class="row btn btn-secondary btn-sm rounded-pill mt-3">　
+   <p><%=@camp.category %></p>
+   </div>  
+   <div class="row h2 font-weight-bold mt-5">
+   <div class="col-10">
    <p>キャンプ場：<%= @camp.name %></p>
+   </div>
+   <div class="col justify-content-end">
+   <%= link_to 'ここへ行きたい', new_camp_path,class: "btn btn-sm btn-info" %>
+   </div>
+   </div>
+   
+   <div class="row h2 font-weight-bold">
+   <div class="col-10">
    <p>エリア：<%= @camp.camp_area %></p>
-   <p>キャンプの種類：<%= @camp.category %></p>
-   <p>説明：<%= @camp.body %></p>
-   <p>ユーザーネーム：<%= @camp.user.name %></p>
+   </div>
+   
+   <div class="col justify-content-end">
+   <%= link_to 'キャン活を投稿', new_camp_path,class: "btn btn-sm btn-danger " %>
+   </div>
+   </div>
+   
+   <div class="row">　
    <p>投稿日：<%= @camp.created_at.strftime('%Y/%m/%d') %></p>
+   </div>
+   
+   <div class="row">
+   <div class="col-3 h6 shadow-lg ">
+   <% if @camp.user.profile_image.attached? %>
+   <%= image_tag @camp.user.profile_image, size: "100x100",class: "rounded-circle mb-5 ml-5 mt-5"%>
+   <% else %>
+   <%= image_tag 'no_image', size: "100x100" %>
+   <% end %><br>
+   <p>ユーザー：<%= @camp.user.name%></p><br>
+   <p>ひとこと：<%= @camp.user.introduction %></p><br>
+   <p>行動範囲：<%= @camp.user.area %></p><br>
+   <p>キャンプレベル：<%= @camp.user.level %></p>
+   </div>
+   
+   <div class="col-9">
+   <% if @camp.image.attached? %>
+   <%= image_tag @camp.image, size: "800x500" %>
+　 <% else %>
+   <%= image_tag 'no_image', size: "800x500" %>
+　 <% end %>
+　 </div>
+　 </div>
+   
+   
+   <div class="row">　
+   <p>説明：<%= @camp.body %></p>
+   </div>
+   
+   <div class="row">　
    <% if @camp.user == current_user %>
    <%= link_to "削除", camp_path(@camp), method: :delete %>
    <% end %>
+   </div>
 </div>

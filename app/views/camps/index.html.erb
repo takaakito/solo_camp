@@ -1,24 +1,24 @@
-<div class="cover-index">
-  <div class="container">
-    <div class="row justify-content-center">
-      <h1 class="font-weight-normal mt-3">みんなの投稿一覧</h1>
-    </div>
-    <div class="row justify-content-center">
-      　<% @camps.each do |camp| %>
-      <div class="one-post ">
+<div class="container">
+    <h1>みんなの投稿一覧</h1>
+  <div class="row">
+    <div class="card" style="width: 18rem;">
+      <div class="card-group">
+      <% @camps.each do |camp| %>
           <% if camp.image.attached? %>
-    　　　<%= image_tag camp.image, size: "400x300" %>
+    　　　<%= image_tag camp.image, size: "450x180",class:"bd-placeholder-img card-img-top" %>
 　　　　　<% else %>
-    　　　<%= image_tag 'no_image', size: "400x300" %>
+    　　　<%= image_tag 'no_image', size: "400x180" %>
 　　　　　<% end %>
-        <p class="caption">キャンプ場：<%= camp.name %></p>
-        <p class="caption">エリア：<%= camp.camp_area %></p>
-        <p class="caption">キャンプの種類：<%= camp.category %></p>
-        <p class="caption">説明：<%= camp.body %></p>
-        <p class="caption">ユーザーネーム：<%= camp.user.name %></p>
-        <%= link_to "詳細へ", camp_path(camp.id) %>  
-      </div>
+　　　　<div class="card-body">
+         キャンプ場：<%= camp.name %></br>
+         エリア：<%= camp.camp_area %></br>
+         キャンプの種類：<%= camp.category %></br>
+         説明：<%= camp.body %></br>
+         ユーザーネーム：<%= camp.user.name %></br>
+         <%= link_to "詳細へ", camp_path(camp.id),class: "btn btn-sm btn-primary" %>
       <% end %>
-    </div>
+     </div>
+   </div>
+ </div>
   </div>
 </div>

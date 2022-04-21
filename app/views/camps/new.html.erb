@@ -1,15 +1,58 @@
+<div class="container bg-light p-3 ">
 
-<h1>投稿してみよう！！！</h1>
+ <h2 class="text-center pt-5 ">おすすめのキャンプ場を投稿する</h2>
+ 
   <%= form_with model: @camp do |f| %>
-    <h4>画像</h4>
-      <%= f.file_field :image, accept: "image/*" %>
-    <h4>キャンプ場の名前</h4>
-      <%= f.text_field :name %>
-    <h4>エリア</h4>
-     <%= f.select :camp_area, Camp.camp_areas.keys, {}, {class: 'hoge'}%>
-    <h4>キャンプの種類</h4>
-     <%= f.select :category, Camp.categories.keys, {}, {class: 'hoge'}%>
-    <h4>説明</h4>
-      <%= f.text_area :body %>
-    <%= f.submit '投稿' %>
+
+ <div class="row d-flex justify-content-center text-center">
+   <div class="col-8">
+    <div class="form-group">
+      <h4>画像</h4>
+      <%= f.file_field :image, accept: "image/*",class: 'btn btn-outline-info btn-block' %>
+     </div>
+   </div>
+  </div>
+ <div class="row d-flex justify-content-center text-center">
+   <div class="col-8">
+    <div class="form-group">
+      <h4>キャンプ場の名前</h4>
+      <%= f.text_field :name,class: 'btn btn-outline-info btn-block' %>
+     </div>
+   </div>
+  </div>
+  
+  <div class="row d-flex justify-content-center text-center">
+   <div class="col-8">
+     <div class="form-group">
+     <h4>エリア</h4>
+     <%= f.select :camp_area, Camp.camp_areas.keys, {}, {class: 'hoge btn btn-outline-info btn-block'} %>
+     </div>
+   </div>
+  </div>
+  
+  <div class="row d-flex justify-content-center text-center">
+   <div class="col-8">
+     <div class="form-group">
+     <h4>キャンプの種類</h4>
+     <%= f.select :category, Camp.categories.keys, {}, {class: 'hoge btn btn-outline-info btn-block'}%>
+    </div>
+   </div>
+  </div>
+  
+  <div class="row d-flex justify-content-center text-center">
+    <div class="col-8">
+     <div class="form-group">
+      <h4>おすすめポイント・感想</h4>
+      <%= f.text_area :body, class: 'btn btn-outline-info btn-block' %>
+    </div>
+   </div>
+  </div>
+  <div class="row d-flex justify-content-center text-center">
+    <div class="col-8">
+     <div class="form-group">
+     <%= f.submit '投稿',class: "btn btn-success "%>
+     </div>
+   </div>
+  </div>
   <% end %>
+  </div>
