@@ -1,20 +1,21 @@
  <div class= "container">
- <h2 class="text-center pt-3">おすすめのキャンプ場を投稿する</h2>
+ <h2 class="text-center pt-3 mb-3">おすすめのキャンプ場を投稿する</h2>
   <div class=row>
       <% @camps.each do |camp| %>
-        <div class="col-3 ml-5">
-        　<div class="btn btn-primary btn-sm active ml-n5">
-          <%= camp.camp_area%></div><br>
+        <div class="bg col-3 ml-5 rounded mb-3 ">
+        　<div class="btn btn-success btn-sm active ml-n4 mt-3 rounded-pill">
+          #<%= camp.camp_area%></div>
+          <div class="btn btn-success btn-sm active mt-3 rounded-pill">
+          #<%= camp.category %></div><br>
+          <div class="h4 mt-3 mb-n4">
+          <%= camp.name %></div><br>
           <% if camp.image.attached? %>
     　　　<%= image_tag camp.image, size: "250x200" %>
 　　　　　<% else %>
-    　　　<%= image_tag 'no_image', size: "450x300" %>
+    　　　<%= image_tag 'no_image', size: "250x200" %>
 　　　　　<% end %><br>
-         キャンプ場：<%= camp.name %><br>
-         キャンプの種類：<%= camp.category %><br>
-         説明：<%= camp.body %><br>
-         ユーザーネーム：<%= camp.user.name %><br>
-         <%= link_to "詳細へ", camp_path(camp.id),class: "btn btn-sm btn-primary" %><br>
+          <%= camp.body.truncate(25)%><br>
+         <%= link_to "もっとみる", camp_path(camp.id),class: "btn btn-sm btn-primary" %><br>
     　　</div>
      　 <% end %>
  </div>
