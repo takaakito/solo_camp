@@ -22,21 +22,28 @@
    </div>
    </div>
    
-   <div class="row">　
+   <div class="row">
+   <div class="col-10">
    <p>投稿日：<%= @camp.created_at.strftime('%Y/%m/%d') %></p>
+   </div>
+   <div class="col justify-content-end">
+   <%= link_to '★★★★★', new_camp_path,class: "btn btn-sm btn-info" %>
+   </div>
    </div>
    
    <div class="row">
    <div class="col-3 h6 shadow-lg ">
+   <div class="d-flex align-items-center justify-content-center">
    <% if @camp.user.profile_image.attached? %>
-   <%= image_tag @camp.user.profile_image, size: "100x100",class: "rounded-circle mb-5 ml-5 mt-5"%>
+   <%= image_tag @camp.user.profile_image, size: "100x100",class: "rounded-circle mb-5 mt-5"%>
    <% else %>
    <%= image_tag 'no_image', size: "100x100" %>
-   <% end %><br>
-   <p>ユーザー：<%= @camp.user.name%></p><br>
-   <p>ひとこと：<%= @camp.user.introduction %></p><br>
-   <p>行動範囲：<%= @camp.user.area %></p><br>
-   <p>キャンプレベル：<%= @camp.user.level %></p>
+   <% end %>
+   </div>
+   <p class="text-center" >ユーザー：<%= @camp.user.name%></p><br>
+   <p class="text-center">ひとこと：<%= @camp.user.introduction %></p><br>
+   <p class="text-center">行動範囲：<%= @camp.user.area %></p><br>
+   <p class="text-center">キャンプレベル：<%= @camp.user.level %></p>
    </div>
    
    <div class="col-9">
@@ -50,12 +57,16 @@
    
    
    <div class="row">　
-   <p>説明：<%= @camp.body %></p>
-   </div>
-   
-   <div class="row">　
+   <div class="col-12 shadow-lg ">
+   <p class= "btn btn-sm btn-info mt-3">お気に入りポイント</p>
+   <p> <%= @camp.body %></p>
+   <div class = "text-right mr-3 mb-2" >
    <% if @camp.user == current_user %>
-   <%= link_to "削除", camp_path(@camp), method: :delete %>
+   <%= link_to "削除", camp_path(@camp), method: :delete,class: "btn btn-sm btn-danger " %>
    <% end %>
    </div>
+   </div>
+   </div>
+   
+
 </div>
