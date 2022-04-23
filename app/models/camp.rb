@@ -1,7 +1,7 @@
 class Camp < ApplicationRecord
       has_one_attached :image
       belongs_to :user
-      
+      has_many :camp_comments, dependent: :destroy
      enum camp_area:{
      "---":0,
      北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,

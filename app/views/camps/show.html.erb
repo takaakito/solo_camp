@@ -5,7 +5,11 @@
    </div>  
    <div class="row h2 font-weight-bold mt-5">
    <div class="col-10">
-   <p>キャンプ場：<%= @camp.name %></p>
+   キャンプ場：<%= @camp.name %>
+   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-right" viewBox="0 0 16 16">
+   <path d="M2 1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h9.586a2 2 0 0 1 1.414.586l2 2V2a1 1 0 0 0-1-1H2zm12-1a2 2 0 0 1 2 2v12.793a.5.5 0 0 1-.854.353l-2.853-2.853a1 1 0 0 0-.707-.293H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12z"/>
+   </svg>
+   <%= @camp.camp_comments.count %>
    </div>
    <div class="col justify-content-end">
    <%= link_to 'ここへ行きたい', new_camp_path,class: "btn btn-sm btn-info" %>
@@ -14,7 +18,7 @@
    
    <div class="row h2 font-weight-bold">
    <div class="col-10">
-   <p>エリア：<%= @camp.camp_area %></p>
+   <p>エリア：<%= @camp.camp_area%></p>
    </div>
    
    <div class="col justify-content-end">
@@ -68,5 +72,20 @@
    </div>
    </div>
    
-
+  <div>
+  <% @camp.camp_comments.each do |camp_comment| %>
+    <%= camp_comment.user.name %>
+    <%= camp_comment.created_at.strftime('%Y/%m/%d') %>
+    <%= camp_comment.comment %>
+    <% if camp_comment.user == current_user %>
+      <%= link_to "削除", camp_camp_comment_path(camp_comment.camp, camp_comment), method: :delete %>
+    <% end %>
+  <% end %>
+</div>
+<div>
+  <%= form_with model: [@camp, @camp_comment] do |f| %>
+    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+    <%= f.submit "送信する" %>
+  <% end %>
+</div>
 </div>
