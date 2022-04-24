@@ -2,6 +2,13 @@ class Camp < ApplicationRecord
       has_one_attached :image
       belongs_to :user
       has_many :camp_comments, dependent: :destroy
+      has_many :favorites, dependent: :destroy
+    
+     def favorited_by?(user)
+      favorites.where(user_id: user.id).exists?
+     end
+    
+    
      enum camp_area:{
      "---":0,
      北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,
@@ -19,4 +26,5 @@ class Camp < ApplicationRecord
      デイキャンプ:0,
      オートキャンプ:1,ツーリングキャンプ:2,ファミリーキャンプ:3,ソロキャンプ:4,グランピング:5
    }
+
 end
