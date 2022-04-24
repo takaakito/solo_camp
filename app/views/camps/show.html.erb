@@ -64,28 +64,34 @@
    <div class="col-12 shadow-lg ">
    <p class= "btn btn-sm btn-info mt-3">お気に入りポイント</p>
    <p> <%= @camp.body %></p>
-   <div class = "text-right mr-3 mb-2" >
+   <div class = "text-right align-self-end mb-3" >
    <% if @camp.user == current_user %>
    <%= link_to "削除", camp_path(@camp), method: :delete,class: "btn btn-sm btn-danger " %>
    <% end %>
    </div>
    </div>
    </div>
-   
-  <div>
-  <% @camp.camp_comments.each do |camp_comment| %>
-    <%= camp_comment.user.name %>
-    <%= camp_comment.created_at.strftime('%Y/%m/%d') %>
+　
+　 <h2 class="text-center pt-3 mb-3">みんなからのコメント</h2>
+  　<div class="row">
+    <% @camp.camp_comments.each do |camp_comment| %>
+    <div class="col-12 mb-3  pt-3 pb-3 border-bottom ">
+    投稿ユーザー:<%= camp_comment.user.name %> / 投稿日:<%= camp_comment.created_at.strftime('%Y/%m/%d')%><br>
     <%= camp_comment.comment %>
+    <div class = "text-right align-self-end" >
     <% if camp_comment.user == current_user %>
-      <%= link_to "削除", camp_camp_comment_path(camp_comment.camp, camp_comment), method: :delete %>
+      <%= link_to "削除", camp_camp_comment_path(camp_comment.camp, camp_comment), method: :delete,class: "btn btn-sm btn-danger " %>
     <% end %>
-  <% end %>
-</div>
-<div>
+    </div>
+    </div>
+    <% end %>
+  </div>
+  
+  <div class="row pt-3"> 
   <%= form_with model: [@camp, @camp_comment] do |f| %>
-    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに",size: "130x5"%>
     <%= f.submit "送信する" %>
   <% end %>
-</div>
+  </div>
+  
 </div>
