@@ -1,27 +1,92 @@
-<div>
-  <h3><%= @user.name %></h3>
-  <p>ひとこと：<%= @user.introduction %></p>
-  <% if @user.profile_image.attached? %>
- <%= image_tag @user.profile_image, size: "100x100" %>
- <% else %>
- <%= image_tag 'no_image', size: "100x100" %>
-<% end %>
-  <p>行動範囲：<%= @user.area %></p>
-  <p>キャンプレベル：<%= @user.level %></p>
-    <% if @user == current_user %>
-<%= link_to "プロフィール編集", edit_user_path(@user) %>
+<div class="container">
+ <div class="row">
+  <div class="col-3 mt-5" >
+   <% if @user.profile_image.attached? %>
+   <%= image_tag @user.profile_image, size: "150x150" %>
+   <% else %>
+   <%= image_tag 'no_image', size: "200x200" %>
    <% end %>
+   <p><%= @user.name %></p>
+   <p>ひとこと：<%= @user.introduction %></p>
+   <p>行動範囲：<%= @user.area %></p>
+   <p>キャンプレベル：<%= @user.level %></p>
+   <% if @user == current_user %>
+   <%= link_to "プロフィール編集", edit_user_path(@user),class:"btn btn-outline-secondary" %>
+   <% end %>
+   </div>
+ </div>
+
+  <ul class="nav nav-tabs justify-content-center mt-5" id="myTab" role="tablist">
+  <li class="nav-item h2">
+    <a class="nav-link active text-secondary" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">MY キャン活</a>
+  </li>
+  <li class="nav-item h2">
+    <a class="nav-link text-secondary" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">ブックマーク</a>
+  </li>
+  <li class="nav-item h2">
+    <a class="nav-link text-secondary" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">MY グルメ飯</a>
+  </li>
+</ul>
+
+<div class="tab-content" id="myTabContent">
+<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+<div class="row justify-content-center">
+   <% @camps.each do |camp| %>
+    <div class="col-8 ">
+     <div class="card mb-3 mt-3">
+      <div class="d-flex flex-row">
+      　<div>
+          <div class="btn btn-info btn-sm mt-3">#<%= camp.camp_area%><br></div>
+          <div class="btn btn-info btn-sm mt-3">#<%= camp.category %></div>
+          <div class="h2 mt-2"><%= camp.name %><br></div>
+          <div><p class="btn btn-warning btn-sm">おすすめポイント</p><br>
+          <%= camp.body.truncate(30)%><br>
+          </div>
+          <div><%= link_to "もっとみる", camp_path(camp.id),class:"btn btn-primary btn-sm mb-3"%></div>
+        </div>
+        <% if camp.image.attached? %>
+　　　　<%= image_tag camp.image,  size: "300x200",class:"mt-3"%>
+　　　　<% else %>
+        <%= image_tag 'no_image', size: "300x200",class:"mt-3" %>
+　　　　<% end %>
+       </div>
+      </div>
+    </div>
+     <% end %>
+ </div>
 </div>
+  
+  
+<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+  <div class="row justify-content-center">
+  <% @user_favorites.reverse_each do |favorite| %>
+  <div class="col-8 ">
+   <div class="card mb-3 mt-3">
+    <div class="d-flex flex-row">
+     <div class="ml-3">
+     <div class="btn btn-info btn-sm mt-3">#<%= favorite.camp.camp_area%><br></div>
+     <div class="btn btn-info btn-sm mt-3">#<%= favorite.camp.category %></div>
+     <div class="h2 mt-2"><%= favorite.camp.name %><br></div>
+     <div><p class="btn btn-warning btn-sm">おすすめポイント</p><br>
+     </div>
+     <%= favorite.camp.body.truncate(30)%><br>
+     <%= link_to "もっとみる",camp_path(favorite.id),class:"btn btn-primary btn-sm mb-3"%></div>
+     <% if favorite.camp.image.attached? %>
+　　 <%= image_tag favorite.camp.image,  size: "300x200",class:"mt-2"%>
+　　 <% else %>
+     <%= image_tag 'no_image', size: "300x200",class:"mt-3" %>
+　　 <% end %>
+   </div>
+ </div>
+</div>
+     <% end %>
+     <% if @user_favorites.empty? %>
+      <h2>お気に入りはありません</h2>
+    <% end %> 
+  </div>
+ </div>
+  
+  
+  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">C</div>
 
-<% @camps.each do |camp| %>
- <% if camp.image.attached? %>
- <%= image_tag camp.image, size: "400x300" %>
- <% else %>
- <%= image_tag 'no_image', size: "400x300" %>
-<% end %>
-キャンプ場：<%= camp.name %></p>
-エリア：<%= camp.camp_area %></p>
-キャンプの種類：<%= camp.category %></p>
-説明：<%= camp.body %></p>
-<% end %>
-
+</div>

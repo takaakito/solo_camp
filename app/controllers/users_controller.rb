@@ -5,7 +5,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @camps = @user.camps    
+    @camps = @user.camps
+    @user_favorites = @user.favorites
   end
   
   def update

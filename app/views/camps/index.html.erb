@@ -1,22 +1,27 @@
  <div class= "container">
  <h2 class="text-center pt-3 mb-3">みんなのおすすめキャンプ場</h2>
-  <div class=row>
-      <% @camps.each do |camp| %>
-        <div class="bg col-3 ml-5 rounded mb-3 ">
-        　<div class="btn btn-success btn-sm active ml-n4 mt-3 rounded-pill">
-          #<%= camp.camp_area%></div>
-          <div class="btn btn-success btn-sm active mt-3 rounded-pill">
-          #<%= camp.category %></div><br>
-          <div class="h4 mt-3 mb-n4">
-          <%= camp.name %></div><br>
-          <% if camp.image.attached? %>
-    　　　<%= image_tag camp.image, size: "250x200" %>
-　　　　　<% else %>
-    　　　<%= image_tag 'no_image', size: "250x200" %>
-　　　　　<% end %><br>
-          <%= camp.body.truncate(25)%><br>
-         <%= link_to "もっとみる", camp_path(camp.id),class: "btn btn-sm btn-primary" %><br>
-    　　</div>
-     　 <% end %>
+  <div class="row justify-content-center">
+   <% @camps.each do |camp| %>
+    <div class="col-8 ">
+     <div class="card mb-3">
+      <div class="d-flex flex-row">
+      　<div>
+          <div class="btn btn-info btn-sm mt-3">#<%= camp.camp_area%><br></div>
+          <div class="btn btn-info btn-sm mt-3">#<%= camp.category %></div>
+          <div class="h2 mt-2"><%= camp.name %><br></div>
+          <div><p class="btn btn-warning btn-sm">おすすめポイント</p><br>
+          <%= camp.body.truncate(30)%><br>
+          </div>
+          <div><%= link_to "もっとみる", camp_path(camp.id),class:"btn btn-primary btn-sm mb-3"%></div>
+        </div>
+        <% if camp.image.attached? %>
+　　　　<%= image_tag camp.image,  size: "300x200",class:"mt-3"%>
+　　　　<% else %>
+        <%= image_tag 'no_image', size: "300x200",class:"mt-3" %>
+　　　　<% end %>
+       </div>
+      </div>
+    </div>
+     <% end %>
  </div>
 </div>
