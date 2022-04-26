@@ -1,0 +1,30 @@
+<div class="container">
+ <div class="row justify-content-center">
+   <% @foods.each do |food| %>
+   <div class="col-3 mt-5 ml-3">
+   <div class="card h-100">
+   <div class="card-img-top">
+    <% if food.food_image.attached? %>
+  　<%= image_tag food.food_image,  size: "253x200", class: "mt-n4"%>
+　  <% else %>
+    <%= image_tag 'no_image', size: "253x200"%>
+　  <% end %>
+　  <div class="card-img-overlay">
+　  <div class="rounded-circle bg-secondary text-white w-50 text-center  ml-n5 mt-n5">
+    <%= food.food_level %></div>
+    <div class="rounded-circle bg-secondary text-white w-50 text-center ml-n5">
+    <%= food.food_time%></div>
+　  </div>
+    
+    <div class="card-body">
+    <h5 class="card-title"><%= food.camp_food %></h5>
+    <div class="card-text">
+    <%= food.food_introduction%>
+    </div> 
+    </div>
+    </div>
+   </div>
+  </div>
+  <% end %>
+ </div>
+</div>

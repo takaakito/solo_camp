@@ -1,0 +1,58 @@
+<div class="container bg mt-3 ">
+
+ <h2 class="text-center pt-5 ">おすすめのキャンプ場を投稿する</h2>
+ 
+  <%= form_with model: @food do |f| %>
+
+ <div class="row d-flex justify-content-center text-center">
+   <div class="col-8">
+    <div class="form-group">
+      <h4>画像</h4>
+      <%= f.file_field :food_image, accept: "image/*",class: 'btn btn-outline-info btn-block' %>
+     </div>
+   </div>
+  </div>
+ <div class="row d-flex justify-content-center text-center">
+   <div class="col-8">
+    <div class="form-group">
+      <h4>料理名</h4>
+      <%= f.text_field :camp_food,class: 'btn btn-outline-info btn-block' %>
+     </div>
+   </div>
+  </div>
+  
+  <div class="row d-flex justify-content-center text-center">
+   <div class="col-8">
+     <div class="form-group">
+     <h4>料理のレベル</h4>
+     <%= f.select :food_level, Food.food_levels.keys, {}, {class: 'hoge btn btn-outline-info btn-block'} %>
+     </div>
+   </div>
+  </div>
+  
+  <div class="row d-flex justify-content-center text-center">
+   <div class="col-8">
+     <div class="form-group">
+     <h4>料理時間</h4>
+     <%= f.select :food_time, Food.food_times.keys, {}, {class: 'hoge btn btn-outline-info btn-block'}%>
+    </div>
+   </div>
+  </div>
+  
+  <div class="row d-flex justify-content-center text-center">
+    <div class="col-8">
+     <div class="form-group">
+      <h4>料理のポイント</h4>
+      <%= f.text_area :food_introduction, class: 'btn btn-outline-info btn-block' %>
+    </div>
+   </div>
+  </div>
+  <div class="row d-flex justify-content-center text-center">
+    <div class="col-8">
+     <div class="form-group">
+     <%= f.submit '投稿',class: "btn btn-success btn-block "%>
+     </div>
+   </div>
+  </div>
+  <% end %>
+  </div>
