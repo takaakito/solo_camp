@@ -14,7 +14,27 @@
    <%= link_to "プロフィール編集", edit_user_path(@user),class:"btn btn-outline-secondary" %>
    <% end %>
    </div>
- </div>
+   
+   <div class="col-8 mt-5  text-center" >
+   <p class="h2 mb-4">マイキャンプステータス</p>
+   <div class="btn btn-outline-success disabled mr-5">コメント数<br>
+   <%= current_user.camp_comments.count%>回</div>
+   <div class="btn btn-outline-success disabled mr-5">ブックマーク数<br>
+   <%= current_user.favorites.count%>個</div>
+   <div class="btn btn-outline-success disabled">キャン活投稿数<br>
+   <%= current_user.camps.count%>回</div>
+   </div>
+   
+   
+   <div class="col-12 mt-5 text-center" >
+   <p>MY投稿ランキング</p>
+   <P>コメントした数</P>
+   <%= current_user.camp_comments.count%>
+   <P>ブックマーク数</P>
+   <%= current_user.favorites.count%>
+   </div>
+  </div>
+ 
 
   <ul class="nav nav-tabs justify-content-center mt-5" id="myTab" role="tablist">
   <li class="nav-item h2">
@@ -70,7 +90,7 @@
      <div><p class="btn btn-warning btn-sm">おすすめポイント</p><br>
      </div>
      <%= favorite.camp.body.truncate(30)%><br>
-     <%= link_to "もっとみる",camp_path(favorite.id),class:"btn btn-primary btn-sm mb-3"%></div>
+     <%= link_to "もっとみる",camp_path(favorite.camp.id),class:"btn btn-primary btn-sm mb-3"%></div>
      <% if favorite.camp.image.attached? %>
 　　 <%= image_tag favorite.camp.image,  size: "300x200",class:"mt-2"%>
 　　 <% else %>

@@ -15,7 +15,7 @@
           <div><%= link_to "もっとみる", camp_path(camp.id),class:"btn btn-primary btn-sm mb-3"%></div>
         </div>
         <% if camp.image.attached? %>
-　　　　<%= image_tag camp.image,  size: "300x200",class:"mt-3"%>
+　　　　<%= image_tag camp.image,  size: "350x200",class:"mt-3 "%>
 　　　　<% else %>
         <%= image_tag 'no_image', size: "300x200",class:"mt-3" %>
 　　　　<% end %>
