@@ -15,7 +15,7 @@
    <% end %>
    </div>
    
-   <div class="col-8 mt-5  text-center" >
+   <div class="col-6 mt-5  text-center">
    <p class="h2 mb-4">マイキャンプステータス</p>
    <div class="btn btn-outline-success disabled mr-5">コメント数<br>
    <%= current_user.camp_comments.count%>回</div>
@@ -23,17 +23,54 @@
    <%= current_user.favorites.count%>個</div>
    <div class="btn btn-outline-success disabled">キャン活投稿数<br>
    <%= current_user.camps.count%>回</div>
+    <div class="btn btn-outline-success disabled mr-5 mt-5">コメント数<br>
+   <%= current_user.camps.count%>回</div>
+   <div class="btn btn-outline-success disabled mr-5 mt-5">ブックマーク数<br>
+   <%= current_user.camps.count%>回</div>
+   <div class="btn btn-outline-success disabled mt-5">キャン活投稿数<br>
+   <%= current_user.camps.count%>回</div>
+   </div>
    </div>
    
-   
-   <div class="col-12 mt-5 text-center" >
-   <p>MY投稿ランキング</p>
-   <P>コメントした数</P>
-   <%= current_user.camp_comments.count%>
-   <P>ブックマーク数</P>
-   <%= current_user.favorites.count%>
+<div class="row ">
+   <div class="col-4 mt-5">
+   <p>キャン活投稿ランキング</p>
+   <% @my_ranks.each.with_index(1) do |camp, i| %>
+    第<%=i%>位　<%=camp.name %>
+    <% if camp.image.attached? %>
+　　<%= image_tag camp.image,  size: "300x200",class:"mt-3"%>
+　　<% else %>
+    <%= image_tag 'no_image', size: "300x200",class:"mt-3" %>
+　　<% end %>
+    ブックマーク数：<%=camp.favorites.count %><br>
+    <% end %>
    </div>
-  </div>
+   <div class="col-4 mt-5">
+   <p>キャン飯投稿ランキング</p>
+   <% @my_ranks.each.with_index(1) do |camp, i| %>
+第<%=i%>位　<%=camp.name %>
+    <% if camp.image.attached? %>
+　　<%= image_tag camp.image,  size: "300x200",class:"mt-3"%>
+　　<% else %>
+    <%= image_tag 'no_image', size: "300x200",class:"mt-3" %>
+　　<% end %>
+    ブックマーク数：<%=camp.favorites.count %><br>
+    <% end %>
+   </div>
+   <div class="col-4 mt-5">
+   <p>チルキャン投稿ランキング</p>
+   <% @my_ranks.each.with_index(1) do |camp, i| %>
+第<%=i%>位　<%=camp.name %>
+    <% if camp.image.attached? %>
+　　<%= image_tag camp.image,  size: "300x200",class:"mt-3"%>
+　　<% else %>
+    <%= image_tag 'no_image', size: "300x200",class:"mt-3" %>
+　　<% end %>
+    ブックマーク数：<%=camp.favorites.count %><br>
+    <% end %>
+   </div>
+ </div>
+ 
  
 
   <ul class="nav nav-tabs justify-content-center mt-5" id="myTab" role="tablist">
