@@ -34,7 +34,7 @@
    
 <div class="row ">
    <div class="col-4 mt-5">
-   <p>キャン活投稿ランキング</p>
+   <p class="h3">キャン活投稿ランキング</p>
    <% @my_ranks.each.with_index(1) do |camp, i| %>
     第<%=i%>位　<%=camp.name %>
     <% if camp.image.attached? %>
@@ -46,7 +46,7 @@
     <% end %>
    </div>
    <div class="col-4 mt-5">
-   <p>キャン飯投稿ランキング</p>
+   <p class="h3">キャン飯投稿ランキング</p>
    <% @my_ranks.each.with_index(1) do |camp, i| %>
 第<%=i%>位　<%=camp.name %>
     <% if camp.image.attached? %>
@@ -58,7 +58,7 @@
     <% end %>
    </div>
    <div class="col-4 mt-5">
-   <p>チルキャン投稿ランキング</p>
+   <p class="h3">チルキャン投稿ランキング</p>
    <% @my_ranks.each.with_index(1) do |camp, i| %>
 第<%=i%>位　<%=camp.name %>
     <% if camp.image.attached? %>
