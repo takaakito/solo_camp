@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -22,6 +21,7 @@
       <%= link_to 'ログアウト', destroy_user_session_path, method: :delete,class:"nav-link" %>
       <%= link_to 'キャン活を投稿', new_camp_path,class:"nav-link" %>
       <%= link_to 'キャンプ飯を投稿', new_food_path,class:"nav-link" %>
+      <%= link_to 'みんなのキャンプ飯', foods_path,class:"nav-link" %>
       <%= link_to 'みんなのキャン活', camps_path,class:"nav-link" %>
       <%= link_to 'マイページ', user_path(current_user),class:"nav-link" %>
       <% else %>

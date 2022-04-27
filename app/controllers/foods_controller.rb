@@ -13,6 +13,12 @@ class FoodsController < ApplicationController
     @food.save
     redirect_to foods_path
   end
+  
+  def destroy
+    @food = Food.find(params[:id])
+    @food.destroy
+    redirect_to foods_path
+  end
 
   def show
     @food = Food.find(params[:id])

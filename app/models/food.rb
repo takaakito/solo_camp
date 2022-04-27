@@ -1,9 +1,10 @@
 class Food < ApplicationRecord
     belongs_to :user
-    has_many :foods, dependent: :destroy
-    has_many :camp_comments, dependent: :destroy
-    has_many :favorites, dependent: :destroy
     has_one_attached :food_image
+    
+    def favorited_by?(user)
+      favorites.where(user_id: user.id).exists?
+    end
     
    enum food_level:{
      誰でも簡単:0,
