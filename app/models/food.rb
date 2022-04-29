@@ -1,5 +1,6 @@
 class Food < ApplicationRecord
     belongs_to :user
+    has_many :food_comments, dependent: :destroy
     has_one_attached :food_image
     
     def favorited_by?(user)

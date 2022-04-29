@@ -2,26 +2,22 @@
  <div class="row justify-content-center">
    <% @foods.each do |food| %>
    <div class="col-3 mt-5 ml-3">
+    <h5 class="text-center"><%= food.camp_food %></h5>
     <div class=" rounded bg-secondary text-white font-small w-50 text-center">
     #<%= food.food_level %></div>
     <div class=" rounded bg-secondary text-white font-small w-50 text-center mt-2">
     #<%= food.food_time%></div>
-   <div class="card h-100">
-   <%= link_to "もっとみる", food_path(food.id),class:"btn btn-primary btn-sm"%>
+   <div class="card" style="width: 18rem;">　
    <div class="card-img-top">
     <% if food.food_image.attached? %>
-  　<%= image_tag food.food_image,  size: "253x200", class: "mt-n4"%>
+  　<%= image_tag food.food_image,class:"bd-placeholder-img card-img-top mt-n5"%>
 　  <% else %>
     <%= image_tag 'no_image', size: "253x200"%>
 　  <% end %>
-    <div class="card-body">
-    <h5 class="card-title text-center"><%= food.camp_food %></h5>
-    </div>
+     <%= link_to "もっとみる", food_path(food.id),class:"btn btn-primary btn-sm btn-block"%>
     </div>
    </div>
   </div>
   <% end %>
  </div>
 </div>
-
-

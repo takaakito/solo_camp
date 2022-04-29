@@ -30,9 +30,32 @@
  </div>
  <div class="row justify-content-center mt-3">
   <div class=col-11>
-   <div class=h4>
+   <div class=h5>
+    <p>ポイント</p>
     <%=@food.food_introduction%>
    </div>
+  </div>
+ </div>
+  <h2 class="text-center pt-3 mb-3">みんなからのコメント</h2>
+  　<div class="row">
+   <% @food.food_comments.each do |food_comment| %>
+  <div class="col-11 mb-3  pt-3 pb-3 border-bottom">
+    投稿ユーザー:<%= food_comment.user.name %> / 投稿日<%= food_comment.created_at.strftime('%Y/%m/%d') %><br>
+    <%= food_comment.comment %>
+    <div class = "text-right align-self-end" >
+       <% if food_comment.user == current_user %>
+       <%= link_to "削除", food_food_comment_path(food_comment.food, food_comment), method: :delete,class: "btn btn-sm btn-danger " %>
+       <% end %>
+    </div>
+  </div>
+  <% end %>
+ </div>
+ <div class="form-group row mt-3">
+  <div class="col-sm-11 col-form-label">
+    <%= form_with model: [@food, @food_comment] do |f| %>
+    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに",class:"form-control"%>
+    <%= f.submit "送信する",class:"mt-3" %>
+    <% end %>
   </div>
  </div>
 </div>

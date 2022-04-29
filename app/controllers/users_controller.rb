@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @foods = @user.foods
     @user_favorites = @user.favorites
     @all_ranks = Camp.find(Favorite.group(:camp_id).order('count(camp_id) desc').limit(3).pluck(:camp_id))
-    @my_ranks = @all_ranks.select{ |note| note.user_id == current_user.id }
+    @my_ranks = @all_ranks.select{ |camp| camp.user_id == current_user.id }
   end
   
   def update
