@@ -1,0 +1,34 @@
+<div class="container">
+ <div class="row">
+  <div class="col-9 mt-3">
+  <h2 class="h2 mt-5"><%= @play.camp_play %>
+  </div>
+     <div class="col-2 text-center pt-4">
+   <% if @play.user.profile_image.attached? %>
+   <%= image_tag @play.user.profile_image, size: "100x100",class: "rounded-circle"%>
+   <% else %>
+   <%= image_tag 'no_image', size: "100x100" %>
+   <% end %><br>
+   <p class="text-center" >ユーザー：<%= @play.user.name%></p>
+   </div>
+ </div>
+ <div class="row justify-content-center">
+    <% if @play.play_image.attached? %>
+  　<%= image_tag @play.play_image,class:"bd-placeholder-img card-img-top"%>
+　  <% else %>
+    <%= image_tag 'no_image', size: "253x200"%>
+　  <% end %>
+ </div>
+ <div class="row justify-content-center mt-3">
+  <div class=col-11>
+   <div class=h5>
+    <p>ポイント</p>
+   <%= @play.play_introduction %>
+    <div class= "btn btn-sm btn-danger ml-3"> 
+    <%= link_to "削除", play_path(@play), method: :delete, class: "text-white" %>
+   </div>
+   </div>
+  </div>
+ </div>
+</div>
+  

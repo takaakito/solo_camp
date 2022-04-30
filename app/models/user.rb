@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
     has_many :camps, dependent: :destroy
+    has_many :plays, dependent: :destroy
     has_many :foods, dependent: :destroy
     has_many :camp_comments, dependent: :destroy
     has_many :food_comments, dependent: :destroy

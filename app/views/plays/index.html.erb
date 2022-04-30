@@ -1,0 +1,19 @@
+<div class="container">
+ <div class="row justify-content-center">
+   <% @plays.each do |play| %>
+   <div class="col-3 mt-5 ml-3">
+    <h5 class="text-center"><%= play.camp_play %></h5>
+   <div class="card" style="width: 18rem;">　
+   <div class="card-img-top">
+    <% if play.play_image.attached? %>
+  　<%= image_tag play.play_image,class:"bd-placeholder-img card-img-top mt-n5"%>
+　  <% else %>
+    <%= image_tag 'no_image', size: "253x200"%>
+　  <% end %>
+     <%= link_to "もっとみる", play_path(play.id),class:"btn btn-primary btn-sm btn-block"%>
+    </div>
+   </div>
+  </div>
+  <% end %>
+ </div>
+</div>

@@ -14,4 +14,6 @@ Rails.application.routes.draw do
     
   resources :camp_comments, only: [:create, :destroy]
  end
+ 
+ resources :plays, only: [:new, :index, :show, :create, :destroy]
 end

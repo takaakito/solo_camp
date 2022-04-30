@@ -1,0 +1,35 @@
+<div class="container bg mt-3 ">
+ <h2 class="text-center pt-5 ">キャンプでのおすすめの遊び</h2>
+　<%= form_with model: @play do |f| %>
+　<div class="row d-flex justify-content-center text-center">
+   <div class="col-8">
+    <div class="form-group">
+　　<%= f.file_field :play_image, accept: "image/*"%>
+ 　 </div>
+ 　</div>
+  </div>
+　<div class="row d-flex justify-content-center text-center">
+   <div class="col-8">
+    <p>遊び</p>
+    <div class="form-group">
+　　<%= f.text_field :camp_play,class: 'btn btn-outline-info btn-block'%>
+ 　 </div>
+ 　</div>
+  </div>
+  <div class="row d-flex justify-content-center text-center">
+   <div class="col-8">
+    <p>遊び方</p>
+    <div class="form-group">
+　　<%= f.text_area :play_introduction,class: 'btn btn-outline-info btn-block'%>
+ 　 </div>
+ 　</div>
+  </div>
+  <div class="row d-flex justify-content-center text-center">
+    <div class="col-8">
+     <div class="form-group">
+　　 <%= f.submit '投稿',class: 'btn btn-outline-info btn-block' %>
+ 　 </div>
+ 　</div>
+  </div>
+  <% end %>
+ </div>
