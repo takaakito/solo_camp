@@ -12,8 +12,10 @@ Rails.application.routes.draw do
   resources :camps, only: [:new, :create, :index, :show, :destroy]do
      resource :favorites, only: [:create, :destroy]
     
-  resources :camp_comments, only: [:create, :destroy]
+  resources :camp_comments, only: [:create, :destroy] 
  end
  
- resources :plays, only: [:new, :index, :show, :create, :destroy]
+ resources :plays, only: [:new, :index, :show, :create, :destroy]do
+   resources :play_comments, only:[:create, :destroy]
+end
 end

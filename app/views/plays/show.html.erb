@@ -24,10 +24,29 @@
    <div class=h5>
     <p>ポイント</p>
    <%= @play.play_introduction %>
-    <div class= "btn btn-sm btn-danger ml-3"> 
-    <%= link_to "削除", play_path(@play), method: :delete, class: "text-white" %>
    </div>
-   </div>
+  </div>
+ </div>
+   <h2 class="text-center pt-3 mb-3">みんなからのコメント</h2>
+  　<div class="row">
+   <% @play.play_comments.each do |play_comment| %>
+  <div class="col-11 mb-3  pt-3 pb-3 border-bottom">
+    投稿ユーザー:<%= play_comment.user.name %> / 投稿日<%= play_comment.created_at.strftime('%Y/%m/%d') %><br>
+    <%= play_comment.comment %>
+    <div class = "text-right align-self-end" >
+       <% if play_comment.user == current_user %>
+       <%= link_to "削除", play_play_comment_path(play_comment.play, play_comment), method: :delete,class: "btn btn-sm btn-danger " %>
+       <% end %>
+    </div>
+  </div>
+  <% end %>
+ </div>
+ <div class="form-group row mt-3">
+  <div class="col-sm-12 col-form-label">
+    <%= form_with model: [@play, @play_comment] do |f| %>
+    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに",class:"form-control"%>
+    <%= f.submit "送信する",class:"mt-3" %>
+    <% end %>
   </div>
  </div>
 </div>

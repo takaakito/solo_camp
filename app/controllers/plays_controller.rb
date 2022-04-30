@@ -5,6 +5,7 @@ class PlaysController < ApplicationController
 
   def show
     @play = Play.find(params[:id])
+    @play_comment = PlayComment.new
   end
 
   def new

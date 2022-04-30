@@ -8,6 +8,7 @@ class User < ApplicationRecord
     has_many :plays, dependent: :destroy
     has_many :foods, dependent: :destroy
     has_many :camp_comments, dependent: :destroy
+    has_many :play_comments, dependent: :destroy
     has_many :food_comments, dependent: :destroy
     has_many :favorites, dependent: :destroy
     has_many :food_favorites, dependent: :destroy
