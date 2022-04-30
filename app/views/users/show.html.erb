@@ -16,50 +16,52 @@
    </div>
    
    <div class="col-6 mt-5  text-center">
-   <p class="h2 mb-4">マイキャンプステータス</p>
+   <p class="h2 mb-4">キャン活ステータス</p>
    <div class="btn btn-outline-success disabled mr-5">コメント数<br>
    <%= current_user.camp_comments.count%>回</div>
    <div class="btn btn-outline-success disabled mr-5">ブックマーク数<br>
    <%= current_user.favorites.count%>個</div>
    <div class="btn btn-outline-success disabled">キャン活投稿数<br>
    <%= current_user.camps.count%>回</div>
-    <div class="btn btn-outline-success disabled mr-5 mt-5">コメント数<br>
-   <%= current_user.camps.count%>回</div>
+   <p class="h2 mt-3">キャン飯ステータス</p>
+　 <div class="btn btn-outline-success disabled mr-5 mt-5">コメント数<br>
+   <%= current_user.food_comments.count%>回</div>
    <div class="btn btn-outline-success disabled mr-5 mt-5">ブックマーク数<br>
-   <%= current_user.camps.count%>回</div>
-   <div class="btn btn-outline-success disabled mt-5">キャン活投稿数<br>
-   <%= current_user.camps.count%>回</div>
+   <%= current_user.food_favorites.count%>個</div>
+   <div class="btn btn-outline-success disabled mt-5">キャンプ飯投稿数<br>
+   <%= current_user.foods.count%>回</div>
    </div>
    </div>
    
 <div class="row ">
    <div class="col-4 mt-5">
    <p class="h3">キャン活投稿ランキング</p>
-   <% @my_ranks.each.with_index(1) do |camp, i| %>
+   <%@camp_my_ranks.each.with_index(1) do |camp, i| %>
     第<%=i%>位　<%=camp.name %>
     <% if camp.image.attached? %>
-　　<%= image_tag camp.image,  size: "300x200",class:"mt-3"%>
+　　<%= image_tag camp.image,class:"w-100 mt-3"%>
 　　<% else %>
-    <%= image_tag 'no_image', size: "300x200",class:"mt-3" %>
+    <%= image_tag 'no_image',class:"w-100 mt-3" %>
 　　<% end %>
     ブックマーク数：<%=camp.favorites.count %><br>
     <% end %>
    </div>
    <div class="col-4 mt-5">
    <p class="h3">キャン飯投稿ランキング</p>
-   <% @my_ranks.each.with_index(1) do |camp, i| %>
-第<%=i%>位　<%=camp.name %>
-    <% if camp.image.attached? %>
-　　<%= image_tag camp.image,  size: "300x200",class:"mt-3"%>
-　　<% else %>
-    <%= image_tag 'no_image', size: "300x200",class:"mt-3" %>
-　　<% end %>
-    ブックマーク数：<%=camp.favorites.count %><br>
-    <% end %>
+   <%@food_my_ranks.each.with_index(1) do |food, i| %>
+   第<%=i%>位
+   <%=food.camp_food%>
+   <% if food.food_image.attached? %>
+   <%= image_tag food.food_image, class:"w-100 mt-3"%>
+   <% else %>
+   <%= image_tag 'no_image',class:"w-100 mt-3"%>
+   <% end %><br>
+   ブックマーク数：<%=food.food_favorites.count %>
+   <% end %>
    </div>
    <div class="col-4 mt-5">
    <p class="h3">チルキャン投稿ランキング</p>
-   <% @my_ranks.each.with_index(1) do |camp, i| %>
+   <%@camp_my_ranks.each.with_index(1) do |camp, i| %>
 第<%=i%>位　<%=camp.name %>
     <% if camp.image.attached? %>
 　　<%= image_tag camp.image,  size: "300x200",class:"mt-3"%>

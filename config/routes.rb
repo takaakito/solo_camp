@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update]
   
   resources :foods, only: [:new, :create, :index, :show, :destroy]do
-    resources :food_comments,only: [:create, :destroy]
+    resource :food_favorites, only: [:create, :destroy]
+  
+  resources :food_comments,only: [:create, :destroy]
   end
   
   resources :camps, only: [:new, :create, :index, :show, :destroy]do
