@@ -8,6 +8,7 @@ class UsersController < ApplicationController
     @camps = @user.camps
     @foods = @user.foods
     @user_favorites = @user.favorites
+    @user_food_favorites = @user.food_favorites
     @camp_all_ranks = Camp.find(Favorite.group(:camp_id).order('count(camp_id) desc').limit(3).pluck(:camp_id))
     @camp_my_ranks = @camp_all_ranks.select{ |food| food.user_id == current_user.id }
     @food_all_ranks = Food.find(FoodFavorite.group(:food_id).order('count(food_id) desc').limit(3).pluck(:food_id))

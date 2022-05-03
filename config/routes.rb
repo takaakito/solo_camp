@@ -16,6 +16,9 @@ Rails.application.routes.draw do
  end
  
  resources :plays, only: [:new, :index, :show, :create, :destroy]do
+   resource :play_favorites, only: [:create, :destroy]
+   
    resources :play_comments, only:[:create, :destroy]
 end
+
 end
