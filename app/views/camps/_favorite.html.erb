@@ -1,0 +1,15 @@
+   <div class="col justify-content-end">
+       <% if camp.favorited_by?(current_user) %>
+    <p>
+      <%= link_to camp_favorites_path(camp), method: :delete, remote: true, class: "btn btn-sm btn-danger" do %>
+        ブックマークから外す
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to camp_favorites_path(camp), method: :post, remote: true, class: "btn btn-sm btn-info" do %>
+        ブックマーク
+      <% end %>
+    </p>
+  <% end %>
+   </div>

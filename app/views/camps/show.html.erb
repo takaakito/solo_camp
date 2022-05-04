@@ -7,21 +7,9 @@
    <div class="col-10">
    キャンプ場：<%= @camp.name %>
    </div>
-   <div class="col justify-content-end">
-       <% if @camp.favorited_by?(current_user) %>
-    <p>
-      <%= link_to camp_favorites_path(@camp), method: :delete,class: "btn btn-sm btn-danger" do %>
-        ブックマークから外す
-      <% end %>
-    </p>
-    <% else %>
-    <p>
-      <%= link_to camp_favorites_path(@camp), method: :post,class: "btn btn-sm btn-info" do %>
-        ブックマーク
-      <% end %>
-    </p>
-  <% end %>
-   </div>
+   <div class="favorite_buttons_<%= @camp.id %>">
+     <%= render 'favorite', camp: @camp %>
+   </div>     
    </div>
    
    <div class="row h2 font-weight-bold">
