@@ -1,15 +1,16 @@
 class CampsController < ApplicationController
-  def new
-    @camp = Camp.new
-  end
-
   def index
     @camps = Camp.all
   end
-
+  
   def show
     @camp = Camp.find(params[:id])
     @camp_comment = CampComment.new
+  end
+
+
+  def new
+    @camp = Camp.new
   end
   
   def create

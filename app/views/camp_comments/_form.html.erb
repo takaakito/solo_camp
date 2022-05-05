@@ -1,0 +1,6 @@
+  <div class="row pt-3"> 
+    <%= form_with model: [camp, camp_comment],local: false do  |f| %>
+    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに",size: "130x5"%>
+    <%= f.submit "送信する" %>
+    <% end %>
+  </div>
