@@ -1,1 +1,2 @@
 $('.favorite_buttons_<%= @camp.id %>').html("<%= j(render 'camps/favorite', camp: @camp) %>");
+$('.camp_count').html("<%= escape_javascript(render 'favorites/count', camp: @camp ) %>")

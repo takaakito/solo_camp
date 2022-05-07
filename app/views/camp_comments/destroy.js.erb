@@ -1,1 +1,2 @@
 $('.camps').html("<%= escape_javascript(render 'camp_comments/index', camp: @camp ) %>")
+$('.camp_count').html("<%= escape_javascript(render 'camp_comments/count', camp: @camp ) %>")
