@@ -1,6 +1,11 @@
  <div class= "container">
  <h2 class="text-center pt-3 mb-3">みんなのおすすめキャンプ場</h2>
   <div class="row justify-content-center">
+     <%= search_form_for @q do |f| %>
+    <%= f.label :キャンプ場名で検索する %>
+    <%= f.search_field :name_cont %>
+    <%= f.submit %>
+ <% end %>
    <% @camps.each do |camp| %>
     <div class="col-8 ">
      <div class="card mb-3">

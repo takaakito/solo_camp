@@ -1,6 +1,7 @@
 class CampsController < ApplicationController
   def index
-    @camps = Camp.all
+    @q = Camp.ransack(params[:q])
+    @camps = @q.result(distinct: true)
   end
   
   def show
