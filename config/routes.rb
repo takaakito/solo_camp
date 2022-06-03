@@ -20,5 +20,7 @@ Rails.application.routes.draw do
    
    resources :play_comments, only:[:create, :destroy]
 end
-
+  namespace :admin do
+    resources :users
+  end
 end
