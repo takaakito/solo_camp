@@ -1,24 +1,28 @@
-# README
+# <ここにアプリ名を入力>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+### サイトテーマ
+<アウトドアのコミュニティーサイト>
 
-Things you may want to cover:
+### テーマを選んだ理由
+<アウトドアのコミュニティサイトを見たら、個人の活動記録などが充実しているサイトがなかったため、マイページで個人の活動記録を表示できるサイトを作りたいと思ったため>
 
-* Ruby version
+### ターゲットユーザ
+<アウトドア好きな20代〜30代>
 
-* System dependencies
+### 主な利用シーン
+<個人のキャンプ場の活動記録を残したい場合>
 
-* Configuration
+## 設計書
+<https://docs.google.com/spreadsheets/d/1aqpr8bP2hVSYgM6AP4yNPcB6Rbo3m5wk55gWR0_PGkE/edit#gid=885378170>
 
-* Database creation
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 使用素材
+- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
+- 使用しない場合は、使用素材の項目をREADMEから削除してください。
