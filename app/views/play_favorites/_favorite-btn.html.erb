@@ -1,0 +1,11 @@
+     <div class=col-12>
+      <% if play.favorited_by?(current_user) %>
+      <%= link_to play_play_favorites_path(play), method: :delete,remote: true,class:"btn btn-sm btn-danger"  do %>
+      ブックマークから外す
+      <% end %>
+      <% else %>
+      <%= link_to play_play_favorites_path(play), method: :post,remote: true,class:"btn btn-sm btn-info" do %>
+      ブックマーク
+      <% end %>
+      <% end %>
+   </div>

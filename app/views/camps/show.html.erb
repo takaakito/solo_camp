@@ -7,7 +7,7 @@
    <div class="col-10">
    キャンプ場：<%= @camp.name %>
    </div>
-   <div class="favorite_buttons_<%= @camp.id %>">
+   <div id="favorite_buttons_<%= @camp.id %>">
      <%= render 'favorites/favorite-btn', camp: @camp %>
    </div>     
    </div>

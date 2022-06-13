@@ -1,16 +1,16 @@
 class FavoritesController < ApplicationController
   def create
-    camp = Camp.find(params[:camp_id])
-    favorite = current_user.favorites.new(camp_id: camp.id)
+    @camp = Camp.find(params[:camp_id])
+    favorite = @camp.favorites.new(user_id: current_user.id)
     favorite.save
-    redirect_to camp_path(camp)
   end
 
   def destroy
-    camp = Camp.find(params[:camp_id])
-    favorite = current_user.favorites.find_by(camp_id: camp.id)
+    @camp = Camp.find(params[:camp_id])
+    favorite = @camp.favorites.find_by(user_id: current_user.id)
     favorite.destroy
-    redirect_to camp_path(camp)
   end
+  
+  private
   
 end

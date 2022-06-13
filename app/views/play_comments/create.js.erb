@@ -1,0 +1,3 @@
+$('#plays').html("<%= escape_javascript(render 'play_comments/index', play: @play ) %>")
+$("textarea").val('');
+$('.play_count').html("<%= escape_javascript(render 'play_comments/count', play: @play ) %>")

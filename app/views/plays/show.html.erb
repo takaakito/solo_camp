@@ -1,15 +1,10 @@
 <div class="container">
  <div class="row">
   <div class="col-9 mt-3">
-   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-chat-right" viewBox="0 0 16 16">
-   <path d="M2 1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h9.586a2 2 0 0 1 1.414.586l2 2V2a1 1 0 0 0-1-1H2zm12-1a2 2 0 0 1 2 2v12.793a.5.5 0 0 1-.854.353l-2.853-2.853a1 1 0 0 0-.707-.293H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12z"/>
-   </svg>
-   <%= @play.play_comments.count%>
-   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bookmarks" viewBox="0 0 16 16">
-   <path d="M2 4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v11.5a.5.5 0 0 1-.777.416L7 13.101l-4.223 2.815A.5.5 0 0 1 2 15.5V4zm2-1a1 1 0 0 0-1 1v10.566l3.723-2.482a.5.5 0 0 1 .554 0L11 14.566V4a1 1 0 0 0-1-1H4z"/>
-   <path d="M4.268 1H12a1 1 0 0 1 1 1v11.768l.223.148A.5.5 0 0 0 14 13.5V2a2 2 0 0 0-2-2H6a2 2 0 0 0-1.732 1z"/>
-   </svg>
-   <%= @play.play_favorites.count %>
+   <div class=" play_count col justify-content-end h2">
+    <%= render 'play_comments/count', play: @play %>
+    <%= render 'play_favorites/count', play: @play %>
+   </div>
   <h2 class="h2 mt-5"><%= @play.camp_play %>
   </div>
      <div class="col-2 text-center pt-4">
@@ -20,16 +15,8 @@
    <% end %><br>
    <p class="text-center" >ユーザー：<%= @play.user.name%></p>
    </div>
-     <div class=col-2>
-      <% if @play.favorited_by?(current_user) %>
-      <%= link_to play_play_favorites_path(@play), method: :delete,class:"btn btn-sm btn-danger"  do %>
-      ブックマークから外す
-      <% end %>
-      <% else %>
-      <%= link_to play_play_favorites_path(@play), method: :post,class:"btn btn-sm btn-info" do %>
-      ブックマーク
-      <% end %>
-      <% end %>
+   <div id="play_favorite_buttons_<%= @play.id %>">
+    <%= render 'play_favorites/favorite-btn', play: @play %>
    </div>
  </div>
  <div class="row justify-content-center">
@@ -47,26 +34,11 @@
    </div>
   </div>
  </div>
-   <h2 class="text-center pt-3 mb-3">みんなからのコメント</h2>
-  　<div class="row">
-   <% @play.play_comments.each do |play_comment| %>
-  <div class="col-11 mb-3  pt-3 pb-3 border-bottom">
-    投稿ユーザー:<%= play_comment.user.name %> / 投稿日<%= play_comment.created_at.strftime('%Y/%m/%d') %><br>
-    <%= play_comment.comment %>
-    <div class = "text-right align-self-end" >
-       <% if play_comment.user == current_user %>
-       <%= link_to "削除", play_play_comment_path(play_comment.play, play_comment), method: :delete,class: "btn btn-sm btn-danger " %>
-       <% end %>
-    </div>
+ <h2 class="text-center pt-3 mb-3">みんなからのコメント</h2>
+  <div id= "plays">
+  <%= render 'play_comments/index', play: @play %>
   </div>
-  <% end %>
- </div>
  <div class="form-group row mt-3">
-  <div class="col-sm-12 col-form-label">
-    <%= form_with model: [@play, @play_comment] do |f| %>
-    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに",class:"form-control"%>
-    <%= f.submit "送信する",class:"mt-3" %>
-    <% end %>
-  </div>
+   <%= render 'play_comments/form', play: @play, play_comment: @play_comment %>
  </div>
 </div>

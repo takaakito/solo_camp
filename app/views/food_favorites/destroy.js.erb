@@ -1,0 +1,2 @@
+$('#food_favorite_buttons_<%= @food.id %>').html("<%= j(render 'food_favorites/favorite-btn', food: @food) %>");
+$('.food_count').html("<%= escape_javascript(render 'food_favorites/count', food: @food ) %>")

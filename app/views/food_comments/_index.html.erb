@@ -1,0 +1,13 @@
+<div class="row">
+  <% food.food_comments.each do |food_comment| %>
+   <div class="col-11 mb-3  pt-3 pb-3 border-bottom">
+    投稿ユーザー:<%= food_comment.user.name %> / 投稿日<%= food_comment.created_at.strftime('%Y/%m/%d') %><br>
+    <%= food_comment.comment %>
+   <div class = "text-right align-self-end" >
+    <% if food_comment.user == current_user %>
+    <%= link_to "削除", food_food_comment_path(food_comment.food, food_comment), method: :delete, remote: true,class: "btn btn-sm btn-danger " %>
+    <% end %>
+    </div>
+  </div>
+ <% end %>
+</div>

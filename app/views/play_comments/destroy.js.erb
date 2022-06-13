@@ -1,0 +1,2 @@
+$('#plays').html("<%= escape_javascript(render 'play_comments/index', play: @play ) %>")
+$('.play_count').html("<%= escape_javascript(render 'play_comments/count', play: @play ) %>")

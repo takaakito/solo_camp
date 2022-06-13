@@ -1,0 +1,13 @@
+<div class="row">
+   <% play.play_comments.each do |play_comment| %>
+  <div class="col-11 mb-3  pt-3 pb-3 border-bottom">
+    投稿ユーザー:<%= play_comment.user.name %> / 投稿日<%= play_comment.created_at.strftime('%Y/%m/%d') %><br>
+    <%= play_comment.comment %>
+    <div class = "text-right align-self-end" >
+       <% if play_comment.user == current_user %>
+       <%= link_to "削除", play_play_comment_path(play_comment.play, play_comment), method: :delete,remote: true,class: "btn btn-sm btn-danger " %>
+       <% end %>
+    </div>
+  </div>
+  <% end %>
+ </div>

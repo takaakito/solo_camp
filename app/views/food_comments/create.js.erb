@@ -1,0 +1,3 @@
+$('#foods').html("<%= escape_javascript(render 'food_comments/index', food: @food ) %>")
+$("textarea").val('');
+$('.food_count').html("<%= escape_javascript(render 'food_comments/count', food: @food ) %>")

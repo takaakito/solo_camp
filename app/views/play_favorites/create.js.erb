@@ -1,0 +1,2 @@
+$('#play_favorite_buttons_<%= @play.id %>').html("<%= j(render 'play_favorites/favorite-btn', play: @play) %>");
+$('.play_count').html("<%= escape_javascript(render 'play_favorites/count', play: @play ) %>")
