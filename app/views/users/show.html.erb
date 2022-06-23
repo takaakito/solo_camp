@@ -15,34 +15,17 @@
    <% end %>
    </div>
    
-   <div class="col-9 mt-5  text-center">
-   <p class="h2 mb-4">キャン活ステータス</p>
-   <div class="btn btn-dark active mr-5"aria-pressed="true">コメント数
-   <%= current_user.camp_comments.count%>回</div>
-   <div class="btn btn-dark active mr-5"aria-pressed="true">ブックマーク数
-   <%= current_user.favorites.count%>個</div>
-   <div class="btn btn-dark active "aria-pressed="true">キャン活投稿数
-   <%= current_user.camps.count%>回</div>
-   
-   <p class="h2 mt-3">キャンプ飯ステータス</p>
-　 <div class="btn btn-dark active mr-5"aria-pressed="true">コメント数
-   <%= current_user.food_comments.count%>回</div>
-   <div class="btn btn-dark active mr-5"aria-pressed="true">ブックマーク数
-   <%= current_user.food_favorites.count%>個</div>
-   <div class="btn btn-dark active"aria-pressed="true">キャンプ飯投稿数
-   <%= current_user.foods.count%>回</div>
-   
-   <p class="h2 mt-3">チル活</p>
-　 <div class="btn btn-dark active mr-5"aria-pressed="true">コメント数
-   <%= current_user.play_comments.count%>回</div>
-   <div class="btn btn-dark active mr-5"aria-pressed="true">ブックマーク数
-   <%= current_user.play_favorites.count%>個</div>
-   <div class="btn btn-dark active"aria-pressed="true">チル活投稿数
-   <%= current_user.plays.count%>回</div>
-   </div>
-   </div>
-   
-<div class="row ">
+<div class="col-8 mt-5" >
+  <table class="table">
+   <caption>現在のステータス</caption>
+   <tr class="table-success"><th></th><th>キャン活ステータス</th><th>キャンプ飯ステータス</th><th>チル活ステータス</th></tr>
+   <tr><td>コメント数</td><td><%= current_user.camp_comments.count%>回</td><td><%= current_user.food_comments.count%>回</td><td><%= current_user.play_comments.count%>回</td></tr>
+   <tr><td>ブックマーク数</td><td><%= current_user.favorites.count%>個</td><td><%= current_user.food_favorites.count%>回</td><td><%= current_user.play_favorites.count%>個</td></tr>
+   <tr><td>キャン活投稿数</td><td> <%= current_user.camps.count%>回</td><td><%= current_user.foods.count%>回</td><td><%= current_user.plays.count%>回</td></tr>
+  </table>
+ </div>
+  
+ <div class="row text-center ">
    <div class="col-4 mt-5">
    <p class="h3">キャン活投稿ランキング</p>
    <%@camp_my_ranks.each.with_index(1) do |camp, i| %>
@@ -69,38 +52,36 @@
    <% end %>
    </div>
    <div class="col-4 mt-5">
-   <p class="h3">チルキャン投稿ランキング</p>
+   <p class="h3">遊び投稿ランキング</p>
    <%@camp_my_ranks.each.with_index(1) do |camp, i| %>
 第<%=i%>位　<%=camp.name %>
     <% if camp.image.attached? %>
-　　<%= image_tag camp.image,  size: "300x200",class:"mt-3"%>
+　　<%= image_tag camp.image,  class:"w-100 mt-3"%>
 　　<% else %>
-    <%= image_tag 'no_image', size: "300x200",class:"mt-3" %>
+    <%= image_tag 'no_image', class:"w-100 mt-3" %>
 　　<% end %>
     ブックマーク数：<%=camp.favorites.count %><br>
     <% end %>
    </div>
  </div>
  
- 
-
-  <ul class="nav nav-tabs justify-content-center mt-5" id="myTab" role="tablist">
+ <ul class="nav nav-tabs mt-5 mr-5" id="myTab" role="tablist">
   <li class="nav-item h2">
-    <a class="nav-link active text-secondary" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">MY キャン活</a>
+    <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">MY キャン活</a>
   </li>
   <li class="nav-item h2">
-    <a class="nav-link text-secondary" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">MY グルメ飯</a>
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">MY グルメ飯</a>
   </li>
   <li class="nav-item h2">
-    <a class="nav-link text-secondary" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">MY グルメ飯</a>
+    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">MY 遊び</a>
   </li>
 </ul>
 
 <div class="tab-content" id="myTabContent">
 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-<div class="row justify-content-center">
+<div class="row">
    <% @camps.each do |camp| %>
-    <div class="col-8 ">
+    <div class="col-8">
      <div class="card mb-3 mt-3">
       <div class="d-flex flex-row">
       　<div>
@@ -126,7 +107,7 @@
   
   
 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
- <div class="row justify-content-center">
+ <div class="row">
    <% @foods.each do |food| %>
    <div class="col-3 mt-5 ml-3">
     <h5 class="text-center"><%= food.camp_food %></h5>
@@ -151,9 +132,9 @@
   
   
   <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
- <div class="row justify-content-center">
-   <% @plays.each do |play| %>
-   <div class="col-3 mt-5 ml-3">
+　 <div class="row">
+        <% @plays.each do |play| %>
+   <div class="col-8 mt-5 ml-3">
     <h5 class="text-center"><%= play.camp_play %></h5>
    <div class="card" style="width: 18rem;">　
    <div class="card-img-top">
@@ -169,5 +150,6 @@
   <% end %>
  </div>
 </div>
+
 
 </div>

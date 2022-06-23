@@ -40,9 +40,37 @@
   </div>
 </div>
 </div>
+
+<div class="card-group mb-3 mt-3">
+    <div class="card" style="width: 18rem">
+        <img src="assets/img1.jpg" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title">みんなのキャン活を見る</h5>
+            <p>ユーザーが投稿したキャン活を見ることができます</p>
+            <%= link_to '一覧へ', camps_path,class:"btn btn-primary" %>
+        </div>
+    </div>
+    <div class="card" style="width: 18rem">
+        <img src="assets/img4.jpg" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title">みんなのキャップ飯を見る</h5>
+            <p>ユーザーが投稿したキャン飯を見ることができます</p>
+            <%= link_to '一覧へ', foods_path,class:"btn btn-primary"%>
+        </div>
+    </div>
+    <div class="card" style="width: 18rem">
+        <img src="assets/img5.jpg" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title">みんなの遊びを見る</h5>
+             <p>ユーザーが投稿した遊びを見ることができます</p>
+            <%= link_to '一覧へ', plays_path,class:"btn btn-primary"%>
+        </div>
+    </div>
+</div>
+ <h1 class= "text-center mb-5">最近の投稿を見る</h1>
  <div class= row>
    <div class = col-4>
-    <h2>最近のキャンプ場投稿</h2>
+    <h2>キャンプ場投稿</h2>
     <% @camps.each do |camp| %>
         ユーザ名<%= camp.user.name%><br>
         <% if camp.image.attached? %>
@@ -54,7 +82,7 @@
     <% end %>
    </div>
       <div class = col-4>
-    <h2>最近のキャンプ飯投稿</h2>
+    <h2>キャンプ飯投稿</h2>
     <% @foods.each do |food| %>
      ユーザ名<%= food.user.name%><br>
      <% if food.food_image.attached? %>
@@ -66,10 +94,17 @@
      <% end %>
    </div>
       <div class = col-4>
-    <h2>最近の遊び投稿</h2>
-    <% @plays.each do |play| %>
-          <p><%= play.camp_play %></p>
-    <% end %>
+    <h2>遊び投稿</h2>
+     <% @plays.each do |play| %>
+     ユーザ名<%= play.user.name%><br>
+    <% if play.play_image.attached? %>
+  　<%= image_tag play.play_image,size: "200x150"%>
+　  <% else %>
+    <%= image_tag 'no_image', size: "200x150"%>
+　  <% end %>
+　   <p><%= play.camp_play %></p>
+     <% end %>
+   </div>
    </div>
    </div>
 </div>
