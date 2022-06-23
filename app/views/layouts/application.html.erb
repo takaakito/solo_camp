@@ -11,7 +11,7 @@
   <body>
 <header>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">SoloCamp</a>
+  <%= link_to 'SoloCamp', root_path,class:"navbar-brand" %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -29,8 +29,8 @@
           投稿する
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-      　<%= link_to 'キャン活を投稿', new_camp_path,class:"dropdown-item" %>
-      　<%= link_to 'キャンプ飯を投稿', new_food_path,class:"dropdown-item" %>
+        <%= link_to 'キャン活を投稿', new_camp_path,class:"dropdown-item" %>
+        <%= link_to 'キャンプ飯を投稿', new_food_path,class:"dropdown-item" %>
         <%= link_to '遊びを投稿', new_play_path,class:"dropdown-item" %>
         </div>
       </li>

@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   
   post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
   
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:show, :edit, :update]do
+   get :bookmarks, on: :collection 
+  end
   
   resources :foods, only: [:new, :create, :index, :show, :destroy]do
     resource :food_favorites, only: [:create, :destroy]

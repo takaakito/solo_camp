@@ -17,6 +17,15 @@ class UsersController < ApplicationController
     @food_my_ranks = @food_all_ranks.select{ |food| food.user_id == current_user.id }
     @play_all_ranks = Play.find(PlayFavorite.group(:play_id).order('count(play_id) desc').limit(3).pluck(:play_id))
     @play_my_ranks = @play_all_ranks.select{ |play| play.user_id == current_user.id }
+    
+    bookmarks = Favorite.where(user_id: current_user.id).pluck(:camp_id)
+    @bookmark_list = Camp.find(bookmarks)
+    
+    food_bookmarks = FoodFavorite.where(user_id: current_user.id).pluck(:food_id)
+    @food_bookmark_list = Food.find(food_bookmarks)
+    
+    play_bookmarks = PlayFavorite.where(user_id: current_user.id).pluck(:play_id)
+    @play_bookmark_list = Play.find(play_bookmarks)
   end
   
   def update
