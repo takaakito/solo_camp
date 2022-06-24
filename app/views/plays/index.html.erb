@@ -8,7 +8,7 @@
     <% if play.play_image.attached? %>
   　<%= image_tag play.play_image,class:"bd-placeholder-img card-img-top mt-n5"%>
 　  <% else %>
-    <%= image_tag 'no_image', size: "253x200"%>
+    <%= image_tag 'no_image.jpg', size: "253x200"%>
 　  <% end %>
      <%= link_to "もっとみる", play_path(play.id),class:"btn btn-primary btn-sm btn-block"%>
     </div>

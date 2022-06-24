@@ -4,7 +4,7 @@
    <% if @user.profile_image.attached? %>
    <%= image_tag @user.profile_image, size: "150x150" %>
    <% else %>
-   <%= image_tag 'no_image', size: "200x200" %>
+   <%= image_tag 'no_image.jpg', size: "200x200" %>
    <% end %>
    <p><%= @user.name %></p>
    <p>ひとこと：<%= @user.introduction %></p>
@@ -34,7 +34,7 @@
     <% if camp.image.attached? %>
 　　<%= image_tag camp.image,class:"w-100 mt-3"%>
 　　<% else %>
-    <%= image_tag 'no_image',class:"w-100 mt-3" %>
+    <%= image_tag 'no_image.jpg',class:"w-100 mt-3" %>
 　　<% end %>
     ブックマーク数：<%=camp.favorites.count %><br>
     <% end %>
@@ -47,7 +47,7 @@
    <% if food.food_image.attached? %>
    <%= image_tag food.food_image, class:"w-100 mt-3"%>
    <% else %>
-   <%= image_tag 'no_image',class:"w-100 mt-3"%>
+   <%= image_tag 'no_image.jpg',class:"w-100 mt-3"%>
    <% end %><br>
    ブックマーク数：<%=food.food_favorites.count %>
    <% end %>
@@ -59,7 +59,7 @@
     <% if camp.image.attached? %>
 　　<%= image_tag camp.image,  class:"w-100 mt-3"%>
 　　<% else %>
-    <%= image_tag 'no_image', class:"w-100 mt-3" %>
+    <%= image_tag 'no_image.jpg', class:"w-100 mt-3" %>
 　　<% end %>
     ブックマーク数：<%=camp.favorites.count %><br>
     <% end %>
@@ -101,7 +101,7 @@
         <% if camp.image.attached? %>
 　　　　<%= image_tag camp.image,  size: "300x200",class:"mt-3"%>
 　　　　<% else %>
-        <%= image_tag 'no_image', size: "300x200",class:"mt-3" %>
+        <%= image_tag 'no_image.jpg', size: "300x200",class:"mt-3" %>
 　　　　<% end %>
        </div>
       </div>
@@ -125,7 +125,7 @@
     <% if food.food_image.attached? %>
   　<%= image_tag food.food_image,class:"bd-placeholder-img card-img-top mt-n5"%>
 　  <% else %>
-    <%= image_tag 'no_image', size: "253x200"%>
+    <%= image_tag 'no_image.jpg', size: "253x200"%>
 　  <% end %>
      <%= link_to "もっとみる", food_path(food.id),class:"btn btn-primary btn-sm btn-block"%>
     </div>
@@ -145,7 +145,7 @@
     <% if play.play_image.attached? %>
   　<%= image_tag play.play_image,class:"bd-placeholder-img card-img-top mt-n5"%>
 　  <% else %>
-    <%= image_tag 'no_image', size: "253x200"%>
+    <%= image_tag 'no_image.jpg', size: "253x200"%>
 　  <% end %>
      <%= link_to "もっとみる", play_path(play.id),class:"btn btn-primary btn-sm btn-block"%>
     </div>
@@ -182,7 +182,7 @@
         <% if camp.image.attached? %>
 　　　　<%= image_tag camp.image,  size: "300x200",class:"mt-3"%>
 　　　　<% else %>
-        <%= image_tag 'no_image', size: "300x200",class:"mt-3" %>
+        <%= image_tag 'no_image.jpg', size: "300x200",class:"mt-3" %>
 　　　　<% end %>
 　        </div>
       </div>
@@ -206,7 +206,7 @@
     <% if food.food_image.attached? %>
   　<%= image_tag food.food_image,class:"bd-placeholder-img card-img-top mt-n5"%>
 　  <% else %>
-    <%= image_tag 'no_image', size: "253x200"%>
+    <%= image_tag 'no_image.jpg', size: "253x200"%>
 　  <% end %>
      <%= link_to "もっとみる", food_path(food.id),class:"btn btn-primary btn-sm btn-block"%>
     </div>
@@ -226,7 +226,7 @@
     <% if play.play_image.attached? %>
   　<%= image_tag play.play_image,class:"bd-placeholder-img card-img-top mt-n5"%>
 　  <% else %>
-    <%= image_tag 'no_image', size: "253x200"%>
+    <%= image_tag 'no_image.jpg', size: "253x200"%>
 　  <% end %>
      <%= link_to "もっとみる", play_path(play.id),class:"btn btn-primary btn-sm btn-block"%>
      </div>

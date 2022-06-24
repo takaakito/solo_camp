@@ -40,7 +40,7 @@
    <% if @camp.user.profile_image.attached? %>
    <%= image_tag @camp.user.profile_image, size: "100x100",class: "rounded-circle mb-5 mt-5"%>
    <% else %>
-   <%= image_tag 'no_image', size: "100x100" %>
+   <%= image_tag 'no_image.jpg', size: "100x100" %>
    <% end %>
    </div>
    <p class="text-center" >ユーザー：<%= @camp.user.name%></p><br>
@@ -53,7 +53,7 @@
    <% if @camp.image.attached? %>
    <%= image_tag @camp.image, size: "800x500" %>
 　 <% else %>
-   <%= image_tag 'no_image', size: "800x500" %>
+   <%= image_tag 'no_image.jpg', size: "800x500" %>
 　 <% end %>
 　 </div>
 　 </div>
