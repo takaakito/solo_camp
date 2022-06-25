@@ -1,48 +1,79 @@
-<div class="container">
- <div class="row">
-  <div class="col-9 mt-3">
+<div class="container ">
+   
+   <div class="row mt-3">　
+   <p></p>
+   </div>  
+   <div class="row h2 font-weight-bold mt-5">
+   <div class="col-10">
+   遊び：<%= @play.camp_play %>
+   </div>
+   <div id="play_favorite_buttons_<%= @play.id %>">
+    <%= render 'play_favorites/favorite-btn', play: @play %>
+   </div>    
+   </div>
+   
+   <div class="row h2 font-weight-bold">
+   <div class="col-10">
+   <p></p>
+   </div>
+   
+   <div class="col justify-content-end">
+   <%= link_to '遊びを投稿', new_play_path,class: "btn btn-sm btn-danger " %>
+   </div>
+   </div>
+   
+   <div class="row">
+   <div class="col-10">
+   <p>投稿日：<%= @play.created_at.strftime('%Y/%m/%d') %></p>
+   </div>
    <div class=" play_count col justify-content-end h2">
     <%= render 'play_comments/count', play: @play %>
     <%= render 'play_favorites/count', play: @play %>
    </div>
-  <h2 class="h2 mt-5"><%= @play.camp_play %>
-  </div>
-     <div class="col-2 text-center pt-4">
-           <div class= "btn btn-sm btn-danger ml-3"> 
-    <%= link_to "削除", play_path(@play), method: :delete, class: "text-white" %>
    </div>
+   
+   
+   
+   <div class="row">
+   <div class="col-3 h6 shadow-lg mt-3">
+   <div class="d-flex align-items-center justify-content-center mt-3 mb-3">
    <% if @play.user.profile_image.attached? %>
    <%= image_tag @play.user.profile_image, size: "100x100",class: "rounded-circle"%>
    <% else %>
-   <%= image_tag 'no_image.jpg', size: "100x100" %>
-   <% end %><br>
-   <p class="text-center" >ユーザー：<%= @play.user.name%></p>
+   <%= image_tag 'no_image', size: "100x100" %>
+   <% end %>
    </div>
-   <div id="play_favorite_buttons_<%= @play.id %>">
-    <%= render 'play_favorites/favorite-btn', play: @play %>
+   <p class="text-center" >ユーザー：<%= @play.user.name%></p><br>
+   <p class="text-center">ひとこと：<%= @play.user.introduction %></p><br>
+   <p class="text-center">行動範囲：<%= @play.user.area %></p><br>
+   <p class="text-center">キャンプレベル：<%= @play.user.level %></p>
    </div>
- </div>
-
- <div class="row justify-content-center">
+   
+   <div class="col-9">
     <% if @play.play_image.attached? %>
   　<%= image_tag @play.play_image,class:"bd-placeholder-img card-img-top"%>
 　  <% else %>
     <%= image_tag 'no_image.jpg', size: "253x200"%>
 　  <% end %>
- </div>
- <div class="row justify-content-center mt-3">
-  <div class=col-11>
-   <div class=h5>
-    <p>ポイント</p>
-   <%= @play.play_introduction %>
+　 </div>
+　 </div>
+   
+   
+   <div class="row">　
+   <div class="col-12 shadow-lg ">
+   <p class= "btn btn-sm btn-info mt-3">ポイント</p>
+   <p> <%= @play.play_introduction %></p>
+   <div class = "text-right align-self-end mb-3" >
+   <% if @play.user == current_user %>
+   <%= link_to "削除", play_path(@play), method: :delete,class: "btn btn-sm btn-danger " %>
+   <% end %>
    </div>
-  </div>
- </div>
- <h2 class="text-center pt-3 mb-3">みんなからのコメント</h2>
+   </div>
+   </div>
+  <h2 class="text-center pt-3 mb-3">みんなからのコメント</h2>
   <div id= "plays">
   <%= render 'play_comments/index', play: @play %>
-  </div>
- <div class="form-group row mt-3">
-   <%= render 'play_comments/form', play: @play, play_comment: @play_comment %>
- </div>
+　</div>
+  <%= render 'play_comments/form', play: @play, play_comment: @play_comment %>
+  
 </div>

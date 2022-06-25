@@ -6,11 +6,6 @@
     <%= f.search_field :name_cont %>
     <%= f.submit %>
  　　<% end %>
- 　　  <%= search_form_for @q do |f| %>
-    <%= f.label :camp_area_cont, '都道府県検索' %>
-    <%= f.search_field :camp_area_cont %>
-    <%= f.submit %>
- 　　<% end %>
    <% @camps.each do |camp| %>
     <div class="col-8 ">
      <div class="card mb-3">
