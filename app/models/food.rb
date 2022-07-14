@@ -18,5 +18,5 @@ class Food < ApplicationRecord
     end
     
   validates :camp_food, presence: true
-  validates :food_level, presence: true
+ 
 end
