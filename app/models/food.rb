@@ -17,5 +17,6 @@ class Food < ApplicationRecord
       food_favorites.where(user_id: user.id).exists?
     end
     
+  validates :camp_food, presence: true
  
 end
